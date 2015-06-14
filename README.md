@@ -1,4 +1,4 @@
-# t7open.github.io
+# t7o.github.io
 
 
 the web site for T7 Open Source!
