@@ -1,0 +1,206 @@
+/*
+================================================================================
+General, global styles.
+================================================================================
+*/
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+
+  /*
+    This takes the (usually) browser default 16px
+    and adjusts the base font-size to be 10px, so
+    we can work consistently with `rem` units.
+
+        0.625 * 16px = 10px
+
+    This way...
+
+        1.0rem is equal to 10px
+
+        1.1rem is equal to 11px
+
+    Etc.
+  */
+  font-size: 62.5%;
+
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: #fff;
+  color: #333;
+
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.5;
+
+  /* 16px */
+  font-size: 1.6rem;
+}
+
+pre,
+code {
+  font-family: "DejaVu Sans Mono", Menlo, Consolas, monospace;
+}
+
+pre {
+  background: #f6f6f6;
+  padding: 20px;
+}
+
+code {
+  background: #ffd;
+}
+
+hr {
+  border: 0 solid #ccc;
+  border-top-width: 1px;
+  clear: both;
+  height: 0;
+}
+
+a {
+  color: blue;
+}
+
+small {
+  font-size: 75%;
+}
+
+/*
+================================================================================
+Headings.
+================================================================================
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+
+h1 {
+  /* 28px */
+  font-size: 2.8rem;
+}
+
+h2 {
+  /* 26px */
+  font-size: 2.6rem;
+}
+
+h3 {
+  /* 24px */
+  font-size: 2.4rem;
+}
+
+h4 {
+  /* 22px */
+  font-size: 2.2rem;
+}
+
+h5 {
+  /* 20px */
+  font-size: 2.0rem;
+}
+
+h6 {
+  /* 18px */
+  font-size: 1.8rem;
+}
+
+/*
+================================================================================
+Bottom gutter.
+================================================================================
+*/
+
+p,
+dl,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+ul,
+pre,
+table,
+address,
+fieldset,
+figure {
+  margin-bottom: 20px;
+}
+
+/*
+================================================================================
+Wrapper & Callout.
+================================================================================
+*/
+
+.wrapper,
+.callout {
+  overflow: hidden;
+
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.callout {
+  background: #eee;
+  font-family: "Lobster Two", cursive;
+  margin-bottom: 20px;
+
+  /* 20px */
+  font-size: 2.0rem;
+}
+
+/*
+================================================================================
+Used with JavaScript, to "detect" which `@media` query is met.
+================================================================================
+*/
+
+html:before {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  html:before {
+    content: "mobile";
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  html:before {
+    content: "tablet";
+  }
+}
+
+@media (min-width: 1025px) {
+  html:before {
+    content: "desktop";
+  }
+}

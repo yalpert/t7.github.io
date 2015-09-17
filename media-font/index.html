@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<title>(Don't) Load Font Based on Media Query</title>
+<link rel="stylesheet" href="./css/demo.css" />
+<link
+  rel="stylesheet"
+  data-media="tablet, desktop"
+  data-font="https://fonts.googleapis.com/css?family=Open+Sans"
+/>
+<link
+  rel="stylesheet"
+  data-media="tablet, desktop"
+  data-font="https://fonts.googleapis.com/css?family=Lobster+Two"
+/>
+<script src="./js/demo.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <h1>
+    (Don't) Load Font Based on Media Query
+  </h1>
+
+  <p>
+    At browser widths less than 768px, you should see a default sans-serif font.
+  </p>
+  <p>
+    Above 768px, you should see the "Open Sans" font, hosted by Google&hellip;
+  </p>
+
+  <p>
+    <a href="https://www.google.com/fonts/specimen/Open+Sans">https://www.google.com/fonts/specimen/Open+Sans</a>
+  </p>
+
+  <p>
+    This happens once per page load, so if you resize your browser, there's no effect. What you get when it loads is what you've got.
+  </p>
+
+  <hr />
+
+  <p>
+    Check out the CSS and JavaScript&hellip;
+  </p>
+
+  <p>
+    <a href="./css/demo.css">demo.css</a>
+  </p>
+
+  <p>
+    <a href="./js/demo.js">demo.js</a>
+  </p>
+
+  <hr />
+
+  <p>
+    This paragraph should be set in the "Lobster Two" font, at 768px and up&hellip;
+  </p>
+
+  <div class="callout">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+  </div>
+
+  <p>
+    <a href="https://www.google.com/fonts/specimen/Lobster+Two">https://www.google.com/fonts/specimen/Lobster+Two</a>
+  </p>
+
+  <hr />
+
+  <h2>
+    What? Why? This is stupid.
+  </h2>
+
+  <p>
+    I was talking with my coworkers about font loading best practices, and I jokingly said something like:
+  </p>
+
+  <blockquote>
+    <p>
+      "If we really care about mobile load times, then <i>best practice</i> would be no additional custom fonts."
+    </p>
+  </blockquote>
+
+  <p>
+    But, that got me to thinking whether or not it would even be possible to prevent/defer the loading of additional fonts, based on <code>@media</code> query.
+  </p>
+
+  <hr />
+
+  <p>
+    Initially, I tried this&hellip;
+  </p>
+
+  <p>
+    <code>&lt;link rel="stylesheet" href="&hellip;" media="(min-width: 768px)" /&gt;</code>
+  </p>
+
+  <hr />
+
+  <p>
+    However, as you may already be aware, browsers download that CSS file regardless of whether the <code>@media</code> query is met.
+  </p>
+
+  <p>
+    So, instead &ndash; and this irony is not lost on me &ndash; I am loading an extra JavaScript file that checks what "mode" the page is in (mobile, tablet, desktop) and loads external fonts if it's not mobile.
+  </p>
+
+  <hr />
+
+  <p>
+    So, at non-mobile widths (768px and up), this&hellip;
+  </p>
+
+
+<pre>&lt;link
+  rel="stylesheet"
+  data-media="tablet, desktop"
+  data-font="https://fonts.googleapis.com/css?family=Open+Sans"
+/&gt;</pre>
+
+  <p>
+    Changes to this&hellip;
+  </p>
+
+<pre>&lt;link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Open+Sans"
+/&gt;</pre>
+
+  <hr />
+
+  <h2>
+    Why not use a bandwidth <code>@media</code> query?
+  </h2>
+
+  <p>
+    That would be awesome, if it were a possibility. However, at the time of this writing, such a thing does not exist. Apparently, it would be really difficult for a browser to even know this, and if it did, for it to be completely accurate when a user is moving in/out of varying bandwidth zones.
+  </p>
+
+  <p>
+    <a href="https://css-tricks.com/bandwidth-media-queries">https://css-tricks.com/bandwidth-media-queries</a>
+  </p>
+
+  <p>
+    <a href="http://smashingmagazine.com/2013/01/bandwidth-media-queries-we-dont-need-em">http://smashingmagazine.com/2013/01/bandwidth-media-queries-we-dont-need-em</a>
+  </p>
+
+  <hr />
+
+  <p>
+    <small>
+      This was made by <a href="https://twitter.com/nathansmith">Nathan Smith</a>. Feel free to tell him how dumb it is, on Twitter.
+    </small>
+  </p>
+
+</div>
+<!-- /.wrapper -->
+
+</body>
+</html>
