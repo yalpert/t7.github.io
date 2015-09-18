@@ -10,7 +10,7 @@
   // Reference to document.
   var document = window.document;
 
-  // Reference to <body>.
+  // Reference to <head>.
   var head =
     document.head ||
     document.getElementsByTagName('head')[0];
